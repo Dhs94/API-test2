@@ -1,0 +1,5 @@
+{"expect:1":{"message": "Login Successful", "code": 200, "supervisor": true, "zone": []},
+ "expect:2":{"message":"Logout Successful", "code":200},
+ "expect:3":{"message":"Succeed", "code":200},
+ "expect:4":{"code": 200, "pageSize": 10, "totalItems": 3, "totalPages": 1, "next_url": "", "message": "Succeed", "data": [{"zoneNumber": 1, "zoneName": "just"}, {"zoneNumber": 2, "zoneName": "test"}, {"zoneNumber": 3, "zoneName": "demo"}], "page": 1},
+ "expect:5":{"message": "Succeed", "code": 200}}

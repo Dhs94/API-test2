@@ -25,19 +25,22 @@ class DependData:
         header = self.data.get_case_header(row=row_num, url=url, request_data=request_data)
         request_method = self.data.get_case_method(row_num)
         response_data = self.run.run_request(method=request_method, url=url, data=request_data, cookies=header)
+        # 将str转换为dict
         response_data = json.loads(response_data)
         return response_data
 
     # 根据依赖的key获取以来测试结果的返回值
     def get_data4key(self, row):
         depend_key = self.data.get_depend_key(row)
+        # print(depend_key)
         response_data = self.run_depend()
         # print(response_data)
-        # 在response_data中查找depend_key并返回对应值
+        # 在response_data中返回格式{'code':200,'data':[{'zoneName':1,'zoneNumber':1},{}]},depend_key传入data[0].zoneName,json_exe=data.[0].zoneName
         json_exe = parse(depend_key)
-        # response_data需为dict
+        # 在response_data中寻找dependkey
         madle = json_exe.find(response_data)
-        # [math.value for math in madle]返回值为list
+        # [math.value for math in madle]返回值为list[1]
+        # print([math.value for math in madle])
         return [math.value for math in madle][0]
 
     # 判断是否执行依赖case

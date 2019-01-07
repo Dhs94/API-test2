@@ -32,8 +32,6 @@ class RunTest:
                     res = self.run_method.run_request(data["method"], data["url"], data["request_data"], data["cookie"])
                 else:
                     res = self.run_method.run_request(data["method"], data["url"], data["request_data"])
-                print(data["expect"])
-                print(res)
                 # 判断预期结果与运行结果是否相符
                 if self.common.is_equal_to(dict1=data["expect"], dict2=res):
                     get_data.write_result(i, "Pass")
@@ -43,6 +41,7 @@ class RunTest:
                     get_data.write_result(i, res)
                     fail_count.append(i)
                     print("-------Failed--------")
+
         # self.sendMail.send_main(pass_count, fail_count)
 
 

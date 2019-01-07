@@ -1,2 +1,4 @@
-{"login":{"username":"admin","password":"admin"},"logout":{"username":"admin","password":"admin"}, "add_zone":{"Data":[{"zoneNumber":1, "zoneName":"just"}, {"zoneNumber":2, "zoneName":"test"}, {"zoneNumber":3, "zoneName":"demo"}]},
+{"login":{"username":"admin","password":"admin"},
+ "logout":{"username":"admin","password":"admin"},
+ "add_zone":{"Data":[{"zoneNumber":1, "zoneName":"just"}, {"zoneNumber":2, "zoneName":"test"}, {"zoneNumber":3, "zoneName":"demo"}]},
  "add_dept":{"Data":[{"zoneNumber":2, "departmentCode":"1", "departmentName":"1"}]}}

@@ -149,7 +149,7 @@ class GetData:
         if data["is_run"]:
             data["url"] = self.get_case_url(row)
             data["method"] = self.get_case_method(row)
-            data["expect"] = self.get_case_expect_from_mysql(row)
+            data["expect"] = self.get_case_expect(row)
             data["depend_case_id"] = self.get_depend_case_id(row)
             data["request_data"] = self.get_case_data(row)
             data["cookie"] = self.get_case_header(row, url=data["url"], request_data=data["request_data"])

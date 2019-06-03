@@ -15,6 +15,7 @@ class gloabal_var:
     data = 9
     expect = 10
     result = 11
+    data_retrieve = 12
 
 
 def get_id():
@@ -59,6 +60,10 @@ def get_expect():
 
 def get_result():
     return gloabal_var.result
+
+
+def get_data_retrieve():
+    return gloabal_var.data_retrieve
 
 
 

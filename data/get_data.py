@@ -143,6 +143,12 @@ class GetData:
         else:
             return None
 
+    # 获取数据回收关键字
+    def get_data_retrieve_key(self, row):
+        col = get_data_retrieve()
+        result = self.excel.get_cell_value(row, col)
+        return result
+
     def get_all_data(self, row):
         data = {}
         data["is_run"] = self.get_is_run(row)
@@ -153,6 +159,7 @@ class GetData:
             data["depend_case_id"] = self.get_depend_case_id(row)
             data["request_data"] = self.get_case_data(row)
             data["cookie"] = self.get_case_header(row, url=data["url"], request_data=data["request_data"])
+            data["data_retrieve"] = self.get_data_retrieve_key(row)
         return data
 
 

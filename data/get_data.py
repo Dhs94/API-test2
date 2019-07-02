@@ -157,6 +157,8 @@ class GetData:
             data["method"] = self.get_case_method(row)
             data["expect"] = self.get_case_expect(row)
             data["depend_case_id"] = self.get_depend_case_id(row)
+            data["depend_key"] = self.get_depend_key(row)
+            data["depend_field"] = self.get_depend_field(row)
             data["request_data"] = self.get_case_data(row)
             data["cookie"] = self.get_case_header(row, url=data["url"], request_data=data["request_data"])
             data["data_retrieve"] = self.get_data_retrieve_key(row)

@@ -36,23 +36,31 @@ class DependData:
         response_data = self.run_depend()
         # print(response_data)
         # 在response_data中返回格式{'code':200,'data':[{'zoneName':1,'zoneNumber':1},{}]},depend_key传入data[0].zoneName,json_exe=data.[0].zoneName
-        json_exe = parse(depend_key)
-        # 在response_data中寻找dependkey
-        madle = json_exe.find(response_data)
-        # [math.value for math in madle]返回值为list[1]
-        # print([math.value for math in madle])
-        return [math.value for math in madle][0]
+        if depend_key:
+            json_exe = parse(depend_key)
+            # 在response_data中寻找dependkey
+            madle = json_exe.find(response_data)
+            # [math.value for math in madle]返回值为list[1]
+            # print([math.value for math in madle])
+            return [math.value for math in madle][0]
 
     # 判断是否执行依赖case
-    def is_run_depend_case(self, row, request_data, request_data_key, request_data_num):
+    def is_run_depend_case(self, row, request_data, request_data_key=None, request_data_num=None):
         if self.case_id:
             depend_response_data = self.get_data4key(row)
             depend_filed = self.data.get_depend_field(row)
             # 格式根据数据来写 如 {"data":[{"a":1,"b":2},{"a":3,"b":4}]}
-            request_data[request_data_key][request_data_num][depend_filed] = depend_response_data
-            return request_data
+            if depend_response_data and depend_filed:
+                request_data[request_data_key][request_data_num][depend_filed] = depend_response_data
+                return request_data[request_data_key][request_data_num][depend_filed]
+            else:
+                return request_data
         else:
             return request_data
+# get_data = GetData()
+# data = get_data.get_all_data(33)
+# depend_data = DependData(data["depend_case_id"])
+# data["request_data"] = depend_data.is_run_depend_case(33, data["request_data"], "Data", 0)
 
 
 

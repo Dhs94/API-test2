@@ -67,6 +67,8 @@ class OperateExcel:
     def get_row_num(self, case_id, col=None):
         num = 0
         cols_data = self.get_col_value(col)
+        # print(case_id, type(case_id))
+        # print(cols_data,type(cols_data))
         for col_data in cols_data:
             if case_id in col_data:
                 return num

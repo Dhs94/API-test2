@@ -6,7 +6,7 @@ from Base.RunMethod import RunMain
 from util.common_util import CommonUtil
 from util.depend_data import DependData
 from util.send_mail import SendMail
-
+from main.data_retrieves import data_retrieve
 
 class RunTest:
     def __init__(self):
@@ -27,11 +27,11 @@ class RunTest:
             if data["is_run"]:
                 # 是否有依赖case
                 depend_data = DependData(data["depend_case_id"])
-                data["request_data"] = depend_data.is_run_depend_case(i, data["request_data"], "Data", 0)
-                if data["cookie"]:
-                    res = self.run_method.run_request(data["method"], data["url"], data["request_data"], data["cookie"])
-                else:
-                    res = self.run_method.run_request(data["method"], data["url"], data["request_data"])
+                data["request_data"] = depend_data.is_run_depend_case(i, data["request_data"], data["depend_key"], 0)
+                # if data["cookie"]:
+                res = self.run_method.run_request(data["method"], data["url"], data["request_data"], data["cookie"])
+                # else:
+                #     res = self.run_method.run_request(data["method"], data["url"], data["request_data"])
                 # 判断预期结果与运行结果是否相符
                 if self.common.is_equal_to(dict1=data["expect"], dict2=res):
                     get_data.write_result(i, "Pass")
@@ -41,6 +41,12 @@ class RunTest:
                     get_data.write_result(i, res)
                     fail_count.append(i)
                     print("-------Failed--------")
+                # 数据回收
+                if data["data_retrieve"]:
+                  D = data_retrieve(data["cookie"])
+                  D.data_retrive(data["data_retrieve"], data["request_data"])
+
+
 
         # self.sendMail.send_main(pass_count, fail_count)
 
